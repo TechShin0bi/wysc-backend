@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +27,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-*+c@c-5ao-e+&jmtm&@(enzo@9x9qft)bmj$%8gg_&$5zu$4o5"
+# SECRET_KEY = "django-insecure-*+c@c-5ao-e+&jmtm&@(enzo@9x9qft)bmj$%8gg_&$5zu$4o5"
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-*+c@c-5ao-e+&jmtm&@(enzo@9x9qft)bmj$%8gg_&$5zu$4o5')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -84,10 +91,22 @@ WSGI_APPLICATION = "core.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+
+#    "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('PGDATABASE', 'neondb'),
+        'USER': os.getenv('PGUSER', 'neondb_owner'),
+        'PASSWORD': os.getenv('PGPASSWORD', 'npg_yC9Gq0RoFnpi'),
+        'HOST': os.getenv('PGHOST', 'ep-solitary-cloud-ah44tvy5-pooler.c-3.us-east-1.aws.neon.tech'),
+        'PORT': '5432',  # Default PostgreSQL port
+        'OPTIONS': {
+            'sslmode': 'require',  # Required for Neon.tech
+        },
     }
 }
 
