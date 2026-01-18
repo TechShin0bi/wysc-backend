@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ message_title }}</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: white;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 1rem;
+      color: {% raw %}{{% endraw %} "success" == status|default:"" and "#16a34a" or "#dc2626" %};
+    }
+    p {
+      color: #475569;
+      margin-bottom: 2rem;
+    }
+    a.button {
+      text-decoration: none;
+      background: #3B82F6;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>{{ message_title }}</h1>
+    <p>{{ message_body }}</p>
+
+    <a href="{% url 'login-page' %}" class="button">Se connecter</a>
+  </div>
+</body>
+</html>

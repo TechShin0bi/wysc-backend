@@ -1,0 +1,14 @@
+{% extends "emails/base_email.html" %}
+{% block content %}
+<h2>Bonjour {{ user.first_name }} 👋</h2>
+
+<p>Merci de vous être inscrit sur <strong>{{ app_name }}</strong>.</p>
+
+<p>Cliquez sur le bouton ci-dessous pour activer votre compte :</p>
+
+<p>
+  <a href="{{ activation_url }}" class="btn">Activer mon compte</a>
+</p>
+
+<p>Ce lien expirera bientôt pour des raisons de sécurité.</p>
+{% endblock %}

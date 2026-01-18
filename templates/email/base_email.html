@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ subject }}</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f9fc;
+      margin: 0;
+      padding: 0;
+    }
+    .email-container {
+      max-width: 520px;
+      margin: auto;
+      background: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+    .header {
+      background-color: #3B82F6;
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .content {
+      padding: 24px;
+      color: #111827;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 12px 20px;
+      background-color: #3B82F6;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 13px;
+      color: #6b7280;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="email-container">
+    <div class="header">
+      <div class="logo">{{ app_name }}</div>
+    </div>
+
+    <div class="content">
+      {% block content %}{% endblock %}
+    </div>
+
+    <div class="footer">
+      © {{ year }} {{ app_name }} — All rights reserved.
+    </div>
+  </div>
+</body>
+</html>
