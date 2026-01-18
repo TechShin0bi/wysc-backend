@@ -14,6 +14,7 @@ from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
 import os
+from corsheaders.defaults import default_headers
 
 # Load environment variables from .env file
 load_dotenv()
@@ -34,7 +35,9 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-*+c@c-5ao-e+&jmtm&@(enzo@9
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    ".vercel.app"
+    ".vercel.app",
+    "localhost",
+    "127.0.0.1"
 ]
 
 
@@ -212,3 +215,11 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+
+# settings.py
+
+
+
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    "x-device-id",  # <--- Add your custom header here
+]
