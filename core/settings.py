@@ -184,7 +184,7 @@ AUTH_KIT = {
     # ===================================================================
     # COOKIE CONFIGURATION
     # ===================================================================
-    "AUTH_COOKIE_SECURE": False,  # Require HTTPS for cookies
+    "AUTH_COOKIE_SECURE": os.getenv("AUTH_COOKIE_SECURE", "False").lower() == "true",  # Require HTTPS for cookies
     "AUTH_COOKIE_HTTPONLY": True,  # Prevent JavaScript access
     "AUTH_COOKIE_SAMESITE": "Lax",  # 'Lax', 'Strict', or 'None'
     "AUTH_COOKIE_DOMAIN": None,  # Cookie domain
